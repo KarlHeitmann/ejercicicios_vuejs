@@ -30,6 +30,8 @@
   */
   import { ref, reactive, computed, watch, onMounted } from 'vue'
 
+  import { vAutofocus } from '@/directives/vAutofocus'
+
 /* 
   app title
   */
@@ -125,19 +127,6 @@ onDeactivated(() => {
 /*
   directives
 */
-  // El nombre será el que podré usar en el template, pero se convertirá en v-autofocus
-  const vAutofocus = {
-    // Puedo escoger cualquiera de estas:
-    // beforeMount
-    // mounted
-    // beforeUpdate
-    // updated
-    // beforeUnmount
-    // unmounted
-    mounted: (el) => {
-      el.focus()
-    }
-  }
 
 </script>
 
