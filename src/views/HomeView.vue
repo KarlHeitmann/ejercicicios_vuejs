@@ -21,8 +21,9 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, watch } from 'vue'
+import { ref, reactive, computed, watch, onUnmounted, onBeforeMount, onMounted, onBeforeUnmount } from 'vue'
 
+// Esto corre antes de que el componente sea creado
 const appTitle = 'My Amazing Counter App'
 
 const counter = ref(0),
@@ -62,6 +63,23 @@ const decreaseCounter = (amount, e) => {
   console.log(e)
   counterData.count -= amount
 }
+
+onBeforeMount(() => {
+  console.log('onBeforeMount')
+})
+
+onMounted(() => {
+  console.log('onMounted')
+})
+
+onBeforeUnmount(() => {
+  console.log('onBeforeUnmount')
+})
+
+onUnmounted(() => {
+  console.log('onUnmounted')
+})
+
 </script>
 
 <!--
