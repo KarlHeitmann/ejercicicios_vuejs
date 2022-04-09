@@ -14,7 +14,7 @@
 
     <div class="edit">
       <h4>Edit counter title:</h4>
-      <input v-model="counterData.title" type="text">
+      <input v-model="counterData.title" type="text" v-autofocus>
     </div>
 
   </div>
@@ -121,6 +121,23 @@ onDeactivated(() => {
   console.log('onDeactivated')
 })
 */
+
+/*
+  directives
+*/
+  // El nombre será el que podré usar en el template, pero se convertirá en v-autofocus
+  const vAutofocus = {
+    // Puedo escoger cualquiera de estas:
+    // beforeMount
+    // mounted
+    // beforeUpdate
+    // updated
+    // beforeUnmount
+    // unmounted
+    mounted: (el) => {
+      el.focus()
+    }
+  }
 
 </script>
 
