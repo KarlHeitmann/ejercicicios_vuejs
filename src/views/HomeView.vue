@@ -32,6 +32,11 @@ const counterData = reactive({
   count: 0,
   title: 'My Counter',
 })
+console.log(counterData)
+console.log(counterData.count)
+console.log(counterData.title)
+console.log(counter)
+console.log(counter.value)
 /* XXX Si fuera así:
 const counter = ref(0), puedo usar el watch así:
 watch(counter)....... pero como es un reactive, tengo que usarlo asá */
