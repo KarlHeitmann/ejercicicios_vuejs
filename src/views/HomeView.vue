@@ -23,49 +23,69 @@
 <script setup>
 // Para usar los hooks que hemos visto antes
 // import { ref, reactive, computed, watch, onUnmounted, onBeforeMount, onMounted, onBeforeUnmount, onActivated, onDeactivated } from 'vue'
-import { ref, reactive, computed, watch, onBeforeUpdate, onUpdated } from 'vue'
+// Para los hooks de updated
+// import { ref, reactive, computed, watch, onBeforeUpdate, onUpdated } from 'vue'
+/*
+  imports
+  */
+  import { ref, reactive, computed, watch, onMounted } from 'vue'
 
-// Esto corre antes de que el componente sea creado
-const appTitle = 'My Amazing Counter App'
+/* 
+  app title
+  */
+  onMounted(() => {
+    console.log('Do stuff related to App Title')
+  })
 
-const counter = ref(0),
-      counterTitle = ref('My Counter')
+  // Esto corre antes de que el componente sea creado
+  const appTitle = 'My Amazing Counter App'
 
-const counterData = reactive({
-  count: 0,
-  title: 'My Counter',
-})
-console.log(counterData)
-console.log(counterData.count)
-console.log(counterData.title)
-console.log(counter)
-console.log(counter.value)
-/* XXX Si fuera así:
-const counter = ref(0), puedo usar el watch así:
-watch(counter)....... pero como es un reactive, tengo que usarlo asá */
-watch(() => counterData.count, (newCount, oldCount) => {
-  console.log('oldCount', oldCount)
-  console.log('newCount', newCount)
-  if (newCount == 20) {
-    alert('Way to go! You made it to 20!!')
+/*
+  counter
+  */
+
+  const counter = ref(0),
+        counterTitle = ref('My Counter')
+
+  const counterData = reactive({
+    count: 0,
+    title: 'My Counter',
+  })
+  console.log(counterData)
+  console.log(counterData.count)
+  console.log(counterData.title)
+  console.log(counter)
+  console.log(counter.value)
+  /* XXX Si fuera así:
+  const counter = ref(0), puedo usar el watch así:
+  watch(counter)....... pero como es un reactive, tengo que usarlo asá */
+  watch(() => counterData.count, (newCount, oldCount) => {
+    console.log('oldCount', oldCount)
+    console.log('newCount', newCount)
+    if (newCount == 20) {
+      alert('Way to go! You made it to 20!!')
+    }
+  })
+
+  const oddOrEven = computed(() => {
+    return counterData.count % 2 == 0 ? 'even' : 'odd'
+  })
+
+  const increaseCounter = (amount, e) => {
+    // counter.value++ // Valido para el counter
+    console.log(e)
+    counterData.count += amount
   }
-})
+  const decreaseCounter = (amount, e) => {
+    // counter.value-- // Valido para el counter
+    console.log(e)
+    counterData.count -= amount
+  }
 
-const oddOrEven = computed(() => {
-  return counterData.count % 2 == 0 ? 'even' : 'odd'
-})
-
-const increaseCounter = (amount, e) => {
-  // counter.value++ // Valido para el counter
-  console.log(e)
-  counterData.count += amount
-}
-const decreaseCounter = (amount, e) => {
-  // counter.value-- // Valido para el counter
-  console.log(e)
-  counterData.count -= amount
-}
-
+  onMounted(() => {
+    console.log("Do stuff related to Counter")
+  })
+/* HOOKS
 onBeforeUpdate(() => {
   console.log('onBeforeUpdate')
 })
@@ -73,6 +93,7 @@ onBeforeUpdate(() => {
 onUpdated(() => {
   console.log('onUpdated')
 })
+*/
 
 /* HOOKS
 onBeforeMount(() => {
