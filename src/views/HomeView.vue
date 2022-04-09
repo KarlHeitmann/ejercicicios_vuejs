@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, watch } from 'vue'
 
 const appTitle = 'My Amazing Counter App'
 
@@ -31,6 +31,16 @@ const counter = ref(0),
 const counterData = reactive({
   count: 0,
   title: 'My Counter',
+})
+/* XXX Si fuera así:
+const counter = ref(0), puedo usar el watch así:
+watch(counter)....... pero como es un reactive, tengo que usarlo asá */
+watch(() => counterData.count, (newCount, oldCount) => {
+  console.log('oldCount', oldCount)
+  console.log('newCount', newCount)
+  if (newCount == 20) {
+    alert('Way to go! You made it to 20!!')
+  }
 })
 
 const oddOrEven = computed(() => {
