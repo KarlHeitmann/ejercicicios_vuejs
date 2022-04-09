@@ -21,7 +21,9 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, watch, onUnmounted, onBeforeMount, onMounted, onBeforeUnmount, onActivated, onDeactivated } from 'vue'
+// Para usar los hooks que hemos visto antes
+// import { ref, reactive, computed, watch, onUnmounted, onBeforeMount, onMounted, onBeforeUnmount, onActivated, onDeactivated } from 'vue'
+import { ref, reactive, computed, watch, onBeforeUpdate, onUpdated } from 'vue'
 
 // Esto corre antes de que el componente sea creado
 const appTitle = 'My Amazing Counter App'
@@ -64,6 +66,15 @@ const decreaseCounter = (amount, e) => {
   counterData.count -= amount
 }
 
+onBeforeUpdate(() => {
+  console.log('onBeforeUpdate')
+})
+
+onUpdated(() => {
+  console.log('onUpdated')
+})
+
+/* HOOKS
 onBeforeMount(() => {
   console.log('onBeforeMount')
 })
@@ -88,6 +99,7 @@ onActivated(() => {
 onDeactivated(() => {
   console.log('onDeactivated')
 })
+*/
 
 </script>
 
