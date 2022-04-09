@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, watch, onUnmounted, onBeforeMount, onMounted, onBeforeUnmount } from 'vue'
+import { ref, reactive, computed, watch, onUnmounted, onBeforeMount, onMounted, onBeforeUnmount, onActivated, onDeactivated } from 'vue'
 
 // Esto corre antes de que el componente sea creado
 const appTitle = 'My Amazing Counter App'
@@ -78,6 +78,15 @@ onBeforeUnmount(() => {
 
 onUnmounted(() => {
   console.log('onUnmounted')
+})
+
+// Estos son activados solo si el componente está en "keep alive", dcorriendo en background aunque no se vea
+onActivated(() => {
+  console.log('onActivated')
+})
+
+onDeactivated(() => {
+  console.log('onDeactivated')
 })
 
 </script>
