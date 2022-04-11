@@ -14,12 +14,22 @@
       <!-- <button @click="handleButtonClick">Hide modal</button> Equivalente al de abajo -->
       <button @click="$emit('update:modelValue', false)">Hide modal</button>
 
+      <div>
+        Username: {{ userData.username }}
+      </div>
+
     </div>
   </teleport>
   
 </template>
 
 <script setup>
+
+/*
+  imports
+*/
+
+import { inject } from 'vue'
 
 /*
   props
@@ -56,6 +66,11 @@
   //   console.log('handleButtonClick')
   //   emit('update:modelValue', false)
   // }
+
+/*
+  user data
+*/
+  const userData = inject('userData')
 
 /* XXX Slots
   import { useSlots } from 'vue'
