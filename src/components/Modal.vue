@@ -4,18 +4,25 @@
     <div
       class="modal"
       >
-      <h1>This is a modal</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tenetur, ad ab aliquam sint perferendis possimus distinctio atque natus numquam, repellat fugit? Consequuntur accusamus commodi, aliquid eaque enim architecto porro.
-        Amet, vitae laudantium sint corrupti dolores veniam quidem eos voluptas ipsum quae autem? Eveniet consequuntur labore fugit, voluptas dicta quibusdam nulla temporibus ea officia repellendus ex reiciendis mollitia, eaque porro!
-        Doloremque praesentium tempore vitae vel cum saepe nisi dolorum officiis est, sapiente corrupti explicabo molestiae fugiat laboriosam quaerat optio sit, excepturi quidem asperiores aperiam perspiciatis. Minus asperiores recusandae quidem quos?
-        Quam debitis architecto magni nemo, quo natus velit ducimus soluta veniam sapiente eveniet optio, tenetur veritatis sequi! Sint esse molestias nemo suscipit quod, aliquid perferendis, quaerat ratione assumenda eligendi eius.
-      </p>
+      <h1><slot name="title" /></h1>
+      <slot />
+      <!-- <pre>, esto funcionaba al pasar desde ModalsView con "<template #title>My new title</template>"#title es un shortcut para v-slot:title || Esto es para ver lo que hay en el slot de title, equivale a lo que esta comentado en script con XXX slots{{ $slots.title() }}</pre> -->
       <button>Hide modal</button>
     </div>
   </teleport>
   
 </template>
+
+<script setup>
+  import { useSlots } from 'vue'
+
+/* XXX Slots
+  const slots = useSlots()
+
+  console.log(slots.title())
+  */
+</script>
+
 
 <style scoped>
 .modal {
