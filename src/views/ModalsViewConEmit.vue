@@ -6,6 +6,7 @@
     <Modal
       v-model="showModal"
       title="My modal title (via prop)"
+      @hideModal="showModal = false"
       >
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tenetur, ad ab aliquam sint perferendis possimus distinctio atque natus numquam, repellat fugit? Consequuntur accusamus commodi, aliquid eaque enim architecto porro.

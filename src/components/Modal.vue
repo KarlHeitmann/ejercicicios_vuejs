@@ -11,7 +11,9 @@
       <slot />
       <!-- <pre>, esto funcionaba al pasar desde ModalsView con "<template #title>My new title</template>"#title es un shortcut para v-slot:title || Esto es para ver lo que hay en el slot de title, equivale a lo que esta comentado en script con XXX slots{{ $slots.title() }}</pre> -->
       <!-- <button @click="$emit('hideModal')">Hide modal</button> Equivalente al de abajo -->
-      <button @click="handleButtonClick">Hide modal</button>
+      <!-- <button @click="handleButtonClick">Hide modal</button> Equivalente al de abajo -->
+      <button @click="$emit('update:modelValue', false)">Hide modal</button>
+
     </div>
   </teleport>
   
@@ -43,17 +45,17 @@
   emits
 */
 
-  const emit = defineEmits(['hideModal']) // NO SE NECESITA IMPORTAR
+  const emit = defineEmits(['update:modelValue']) // NO SE NECESITA IMPORTAR
   // this.$emit('hideModal') // NO VA A FUNCIONAR
 
 
 /*
   handle button click
 */
-  const handleButtonClick = () => {
-    console.log('handleButtonClick')
-    emit('hideModal')
-  }
+  // const handleButtonClick = () => {
+  //   console.log('handleButtonClick')
+  //   emit('update:modelValue', false)
+  // }
 
 /* XXX Slots
   import { useSlots } from 'vue'
