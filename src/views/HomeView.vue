@@ -28,7 +28,7 @@
 /*
   imports
   */
-  import { ref, reactive, computed, watch, onMounted } from 'vue'
+  import { ref, reactive, computed, watch, onMounted, nextTick } from 'vue'
 
   import { vAutofocus } from '@/directives/vAutofocus'
 
@@ -78,10 +78,15 @@
     return counterData.count % 2 == 0 ? 'even' : 'odd'
   })
 
-  const increaseCounter = (amount, e) => {
+  const increaseCounter = async (amount, e) => {
     // counter.value++ // Valido para el counter
     console.log(e)
     counterData.count += amount
+    // nextTick(() => { // esto es si no tuviera un async/await
+    //   console.log('do something when counter has updated in the dom')
+    // })
+    await nextTick()
+    console.log('do something when counter has updated in the dom')
   }
   const decreaseCounter = (amount, e) => {
     // counter.value-- // Valido para el counter
