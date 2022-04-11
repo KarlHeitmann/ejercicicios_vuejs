@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h2>{{ appTitle }}</h2>
+    <h2 ref="appTitleRef">{{ appTitle }}</h2>
     <h3>{{ counterData.title }}:</h3>
     <div>
       <button @click="decreaseCounter(1, $event)" class="btn">-</button>
@@ -35,9 +35,14 @@
 /* 
   app title
   */
+  const appTitleRef = ref(null)
+
   onMounted(() => {
     console.log('Do stuff related to App Title')
+    console.log(appTitleRef.value)
+    console.log(`The app title is ${appTitleRef.value.offsetWidth} px wide!`)
   })
+
 
   // Esto corre antes de que el componente sea creado
   const appTitle = 'My Amazing Counter App'
