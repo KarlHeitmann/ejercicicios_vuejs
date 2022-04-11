@@ -1,20 +1,10 @@
 <template>
   <div class="modals">
     <h1>Modals</h1>
-    <div>
-      <label>
-        Show dark models
-        <input
-          v-model="showDarkModals"
-          type="checkbox"
-          >
-      </label>
-    </div>
     <button @click="showModal = true">Show modal</button>
       <!-- v-if="showModal" El v-if funciona con el ModalConEmit, en lugar del v-model -->
-    <component
+    <Modal
       v-model="showModal"
-      :is="showDarkModals ? ModalDark : Modal"
       title="My modal title (via prop)"
       >
       <p>
@@ -23,7 +13,7 @@
         Doloremque praesentium tempore vitae vel cum saepe nisi dolorum officiis est, sapiente corrupti explicabo molestiae fugiat laboriosam quaerat optio sit, excepturi quidem asperiores aperiam perspiciatis. Minus asperiores recusandae quidem quos?
         Quam debitis architecto magni nemo, quo natus velit ducimus soluta veniam sapiente eveniet optio, tenetur veritatis sequi! Sint esse molestias nemo suscipit quod, aliquid perferendis, quaerat ratione assumenda eligendi eius.
       </p>
-    </component>
+    </Modal>
   </div>
 </template>
 
@@ -33,12 +23,10 @@
 */
   import { ref } from 'vue'
   import Modal from '@/components/Modal.vue';
-  import ModalDark from '@/components/ModalDark.vue';
 /*
   modals
 */
 
-  const showDarkModals = ref(false)
   const showModal = ref(false)
 
 </script>
