@@ -2,8 +2,9 @@
   <div class="modals">
     <h1>Modals</h1>
     <button @click="showModal = true">Show modal</button>
+      <!-- v-if="showModal" El v-if funciona con el ModalConEmit, en lugar del v-model -->
     <Modal
-      v-if="showModal"
+      v-model="showModal"
       title="My modal title (via prop)"
       @hideModal="showModal = false"
       >

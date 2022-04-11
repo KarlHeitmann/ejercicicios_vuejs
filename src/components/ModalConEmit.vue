@@ -2,7 +2,6 @@
   <!--<teleport to="body"> para teletransportarlo al body, con esto no es necesario tocar el src/assets/base.css y agregarle la linea de .modals-container { position: initial; }-->
   <teleport to=".modals-container">
     <div
-    v-if="modelValue"
       class="modal"
       >
       <!-- <h1>{{ props.title }}</h1> Equivalente al de abajo -->
@@ -24,12 +23,7 @@
 */
 
   import { ref } from "vue";
-
   const props = defineProps({
-    modelValue: {
-      type: Boolean,
-      default: false,
-    },
     title: {
       type: String,
       default: 'No title specified'
